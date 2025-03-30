@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kijnaphat | Geospatial & Web Projects from SWU student. Discover interactive maps, YouTube videos, and more.">
+  <meta property="og:title" content="Kijnaphat | Geospatial & Web Projects from SWU">
+  <meta property="og:description" content="Discover interactive maps, YouTube videos, and more.">
+  <meta property="og:image" content="image/preview.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#ff4081">
+  <title>Kijnaphat | SWU</title>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Kanit', sans-serif;
+      background: radial-gradient(circle at top left, #1e1e2f, #0e0e1a);
+      color: #eee;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      box-shadow: 0 2px 20px rgba(255, 64, 129, 0.1);
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 45px;
+      margin-right: 12px;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff4081;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -5px;
+      background-color: #ff4081;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #ff4081;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(to right, #2c2f70, #1a1833);
+      color: #fff;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #ff4081;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #ccc;
+    }
+
+    main.container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #ff4081;
+      border-left: 4px solid #4a3df1;
+      padding-left: 10px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #1a1a2b;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(255, 64, 129, 0.3);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      color: #8c7bff;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-me {
+      margin-top: 4rem;
+      background: #222234;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .about-me img {
+      width: 320px;
+      height: 320px;
+      border-radius: 15px; /* หรือ 0 ถ้าต้องการขอบเหลี่ยมชัดเจน */
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(255, 64, 129, 0.2);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-me p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #bbb;
+    }
+
+    .social-links {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .social-links h2 {
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0.4rem;
+      padding: 0.7rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(to right, #4a3df1, #8c7bff);
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-links a:hover {
+      background: linear-gradient(to right, #ff4081, #ff6eaa);
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #151525;
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff4081;
+      color: white;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 99;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="image/SWU_Logo_EN_Color (1).png" alt="SWU Logo">
+      <span>Kijnaphat | SWU</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="youtube.html">YouTube</a>
+      <a href="map.html">Map</a>
+      <a href="qgis2web.html">QGIS2Web</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Kijnaphat's World</h1>
+    <p>I’m a passionate SWU student who loves geography, sushi, and turning ideas into interactive web experiences.</p>
+  </section>
+
+  <main class="container">
+    <h2>🛠 My Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="image/qgisLogo.png" alt="Preview of QGIS map project">
+        <h3>Interactive QGIS Map</h3>
+        <p>Visualizing data layers with Leaflet and QGIS2Web.</p>
+        <a href="qgis2web.html">View Project →</a>
+      </div>
+      <div class="project-card">
+        <img src="image/youtube3.png" alt="Preview of embedded YouTube video project">
+        <h3>YouTube Video Embed</h3>
+        <p>My embedded video project with styled layout.</p>
+        <a href="youtube.html">Watch Video →</a>
+      </div>
+      <div class="project-card">
+        <img src="image/googlemap.png" alt="Preview of Google Map integration">
+        <h3>Google Map Integration</h3>
+        <p>Explore the SWU campus location interactively.</p>
+        <a href="map.html">Explore Map →</a>
+      </div>
+    </div>
+
+    <div class="about-me">
+      <h2>👨‍💻 About Me</h2>
+      <img src="image/IMG_0943.jpg" alt="Kijnaphat portrait">
+      <p>Hello, my name is Kijnaphat Suksod, a passionate geographer and geoinformatics specialist with a vision to bridge data, landscapes, and decision-making in ways that transform our understanding of the world.
+
+         With a solid academic foundation and an unshakable curiosity for how space, place, and data interact, I have developed a deep expertise in spatial analysis, remote sensing, GIS modeling, and data-driven environmental planning. Whether working with satellite imagery, UAV data, or multi-dimensional geographic information systems, I am driven by one purpose: to uncover the unseen patterns of the Earth and turn them into actionable insights.
+         
+         I believe that geography is more than just maps—it's the key to solving real-world problems. My work combines advanced geospatial technologies with strategic thinking to support urban development, disaster resilience, and sustainable resource management.
+         
+         In every project, I strive to bring clarity to complexity and reveal the stories hidden within coordinates. I don’t just map the world—I help people make smarter decisions within it.</p>
+    </div>
+
+    <div class="social-links">
+      <h2>📱 Connect with Me</h2>
+      <a href="https://www.youtube.com/@kijnaphat" target="_blank">📺 YouTube</a>
+      <a href="https://github.com/kijnaphat" target="_blank">💻 GitHub</a>
+      <a href="mailto:kijnaphat@gmail.com">💌 Email</a>
+      <a href="https://www.facebook.com/kijnaphat.suksod.2024" target="_blank">📱 Facebook</a>
+      <a href="https://www.instagram.com/kijnaphat/" target="_blank">📸 Instagram</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Kijnaphat @ SWU | Crafted with 💜, curiosity & code
+  </footer>
+
+  <button id="scrollTopBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⬆️</button>
+
+  <audio id="bg-audio" src="audio/ambient.mp3" autoplay loop hidden></audio>
+  <button onclick="toggleAudio()" style="position: fixed; bottom: 80px; right: 20px; background: #4a3df1; color: white; border: none; padding: 0.6rem 1rem; border-radius: 8px; cursor: pointer;">Toggle Sound</button>
+  <script>
+    const bgAudio = document.getElementById('bg-audio');
+    let isPlaying = true;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        bgAudio.pause();
+      } else {
+        bgAudio.play();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>
